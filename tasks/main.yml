@@ -1,0 +1,14 @@
+---
+# tasks file for lighthouse-role
+- include_tasks: "install/{{ ansible_pkg_mgr }}.yml"
+- block:
+    - name: Get lighthouse distrib
+      ansible.builtin.get_url:
+        url: "{{ lighthouse_distrib }}"
+        dest: ./lighthouse.zip
+    - name: Unpack lighthouse archive
+      become: true
+      ansible.builtin.unarchive:
+        src: ./lighthouse.zip
+        dest: "{{ nginx_basedir }}"
+        remote_src: yes

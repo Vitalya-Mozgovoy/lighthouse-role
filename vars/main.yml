@@ -1,0 +1,5 @@
+---
+# vars file for lighthouse-role
+required_packages:
+  - unzip
+nginx_basedir: /usr/share/nginx
